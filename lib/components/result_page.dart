@@ -1,10 +1,12 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:bmi_calc/screen/const.dart';
 import 'input_page.dart';
 import 'reuse_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatelessWidget {
-  ResultPage({this.bmiResult, this.innterpretation, this.resultText});
+  ResultPage({super.key, this.bmiResult, this.innterpretation, this.resultText});
   String? bmiResult;
   String? resultText;
   String? innterpretation;
@@ -15,7 +17,7 @@ class ResultPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("BMI Calculator"),
+          title: const Text("BMI Calculator"),
           backgroundColor: const Color(0xFF0A0E21),
         ),
         body: Column(
@@ -23,9 +25,9 @@ class ResultPage extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Container(
-                padding: EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(15.0),
                 alignment: Alignment.bottomLeft,
-                child: Text("Your Result", style: kTitleTextStyle,),
+                child: const Text("Your Result", style: kTitleTextStyle,),
               ),
             ),
             Expanded(
@@ -53,17 +55,17 @@ class ResultPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => InputPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const InputPage()));
               },
               child: Container(
-                child: Center(
-                child: Text("Re-Calculate", style: kLargeButtonTextStyle,),
-                ),
                 color: kBottomContainerColor,
-                margin: EdgeInsets.only(top: 10.0),
-                padding: EdgeInsets.only(bottom: 20.0),
+                margin: const EdgeInsets.only(top: 10.0),
+                padding: const EdgeInsets.only(bottom: 20.0),
                 width: double.infinity,
                 height: kBottomContainerHeight,
+                child: const Center(
+                child: Text("Re-Calculate", style: kLargeButtonTextStyle,),
+                ),
               ),
             ),
           ],

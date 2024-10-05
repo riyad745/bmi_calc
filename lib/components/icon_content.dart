@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../screen/const.dart';
 
 
+// ignore: must_be_immutable
 class IconContent extends StatelessWidget {
   IconContent({super.key, this.icon, this.label});
   IconData? icon;

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:bmi_calc/components/icon_content.dart';
 import 'result_page.dart';
 import 'reuse_card.dart';
@@ -12,6 +14,8 @@ enum Gender {
 }
 
 class InputPage extends StatefulWidget {
+  const InputPage({super.key});
+
   @override
   State<InputPage> createState() => _InputPageState();
 }
@@ -21,7 +25,8 @@ class _InputPageState extends State<InputPage> {
   int height = 180;
   int weight = 60;
   int age = 20;
-  bool _isButtonDisabled = false;
+  // ignore: unused_field
+  final bool _isButtonDisabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +87,7 @@ class _InputPageState extends State<InputPage> {
                 cardChild: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
+                    const Text(
                       "Height",
                       style: kLabelTextStyle,
                     ),
@@ -92,25 +97,25 @@ class _InputPageState extends State<InputPage> {
                       textBaseline: TextBaseline.alphabetic,
                       children: <Widget>[
                         Text(height.toString(), style: kNumberTextStyle),
-                        Text("cm", style: kLabelTextStyle)
+                        const Text("cm", style: kLabelTextStyle)
                       ],
                     ),
                     SliderTheme(
                       data: SliderTheme.of(context).copyWith(
                           activeTrackColor: Colors.white,
-                          thumbColor: Color(0xFFEB1555),
-                          overlayColor: Color(0x29EB1555),
-                          thumbShape: RoundSliderThumbShape(
+                          thumbColor: const Color(0xFFEB1555),
+                          overlayColor: const Color(0x29EB1555),
+                          thumbShape: const RoundSliderThumbShape(
                             enabledThumbRadius: 15.0,
                           ),
                           overlayShape:
-                              RoundSliderOverlayShape(overlayRadius: 30.0)),
+                              const RoundSliderOverlayShape(overlayRadius: 30.0)),
                       child: Slider(
                           value: height.toDouble(),
                           min: 120.0,
                           max: 220.0,
                           activeColor: Colors.white,
-                          inactiveColor: Color(0xFF8D8E98),
+                          inactiveColor: const Color(0xFF8D8E98),
                           onChanged: (double newValue) {
                             setState(() {
                               height = newValue.round();
@@ -130,7 +135,7 @@ class _InputPageState extends State<InputPage> {
                       cardChild: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text(
+                          const Text(
                             "Weight",
                             style: kLabelTextStyle,
                           ),
@@ -151,7 +156,7 @@ class _InputPageState extends State<InputPage> {
                                           }
                                         });
                                       }),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10.0,
                               ),
                               RoundIconButton(
@@ -173,7 +178,7 @@ class _InputPageState extends State<InputPage> {
                       cardChild: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text(
+                          const Text(
                             "Age",
                             style: kLabelTextStyle,
                           ),
@@ -195,7 +200,7 @@ class _InputPageState extends State<InputPage> {
                                   });
                                 },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10.0,
                               ),
                               RoundIconButton(
@@ -229,17 +234,17 @@ class _InputPageState extends State<InputPage> {
                             )));
               },
               child: Container(
-                child: Center(
+                color: kBottomContainerColor,
+                margin: const EdgeInsets.only(top: 10.0),
+                padding: const EdgeInsets.only(bottom: 20.0),
+                width: double.infinity,
+                height: kBottomContainerHeight,
+                child: const Center(
                   child: Text(
                     "Calculate",
                     style: kLargeButtonTextStyle,
                   ),
                 ),
-                color: kBottomContainerColor,
-                margin: EdgeInsets.only(top: 10.0),
-                padding: EdgeInsets.only(bottom: 20.0),
-                width: double.infinity,
-                height: kBottomContainerHeight,
               ),
             ),
           ],
@@ -250,7 +255,7 @@ class _InputPageState extends State<InputPage> {
 }
 
 class RoundIconButton extends StatelessWidget {
-  RoundIconButton({this.icon, this.onPressed});
+  RoundIconButton({super.key, this.icon, this.onPressed});
 
   IconData? icon;
   Function? onPressed;
@@ -258,16 +263,16 @@ class RoundIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      textStyle: TextStyle(color: Colors.white),
-      child: Icon(icon),
+      textStyle: const TextStyle(color: Colors.white),
       elevation: 0.0,
       onPressed: onPressed!(),
-      constraints: BoxConstraints.tightFor(
+      constraints: const BoxConstraints.tightFor(
         width: 56.0,
         height: 56.0,
       ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
+      shape: const CircleBorder(),
+      fillColor: const Color(0xFF4C4F5E),
+      child: Icon(icon),
     );
   }
 }
